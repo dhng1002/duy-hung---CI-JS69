@@ -359,6 +359,7 @@ header{
     justify-content: space-between;
     align-items: center;
     margin-top: 20px;
+    flex-wrap: wrap;
 }
 .nav-bar {
     margin: 0;
@@ -384,14 +385,39 @@ section{
     margin-top: 50px;
 }
 section > div{
-    width: calc(100%/4);
+    width:  calc(100%/4);
     padding: 0 20px;
-    overflow-wrap: break-word;
+    flex: 1 0 calc(100%/4);
 }
 section div img{
     width: 100%;
     border-radius: 10px;
 }
 h1{
-  font-size: 2rem;
+  font-size: 1.5rem;
+}
+
+@media screen and (max-width:850px){
+  section > div{
+    width:  calc(100%/3);
+    padding: 0 20px;
+    flex: 1 0 calc(100%/3);
+}
+}
+@media screen and (max-width:650px){
+  header{
+    justify-content: center;
+  }
+  section > div{
+    width:  calc(100%/2);
+    padding: 0 20px;
+    flex: 1 0 calc(100%/2);
+}
+}
+@media screen and (max-width:450px){
+  section > div{
+    width:  calc(100%);
+    padding: 0 20px;
+    flex: 1 0 calc(100%);
+}
 }
