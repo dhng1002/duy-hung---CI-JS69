@@ -21,7 +21,6 @@ class App {
         this.element.classList.add(...this.tailwind)
         this.element.appendChild(AppBG)
         this.element.appendChild(AppForm)
-
     }
     reRender(a){
         return a

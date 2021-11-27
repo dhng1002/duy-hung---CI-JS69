@@ -1,7 +1,10 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getAuth, createUserWithEmailAndPassword, sendEmailVerification, updateProfile } from "firebase/auth";
-
+import {$, $$} from '../js/tool'
+import current from "../index"
+import PopUp from "./Pop-up"
+import styles from '../index.module.scss' 
 const firebaseConfig = {
   apiKey: "AIzaSyB3Vx_Q9me_Z9CsmE7MOAlWP_kBzp30kcw",
   authDomain: "extreme-signal-331220.firebaseapp.com",
@@ -28,23 +31,32 @@ const actionCodeSettings = {
 const app = initializeApp(firebaseConfig);
 getAnalytics(app);
 const auth = getAuth(app);
-let result;
-let err;
+let notification = new PopUp()
+function handleClick(){
+  notification.element.classList.add('hidden')
+  $(`#${styles.root}`).removeEventListener('click', handleClick)
+ }
 async function data(email, password, userName){
 createUserWithEmailAndPassword(auth, email, password)
   .then((user) => {
     updateProfile(auth.currentUser, {
       displayName: userName, photoURL: "https://example.com/jane-q-user/profile.jpg"
       
+    }).then(()=>{
+      sendEmailVerification(auth.currentUser)
+    }).then(()=>{
+      current.element.appendChild(notification.sendSuccess())
+      notification.element.classList.remove('hidden')
+      $(`#${styles.root}`).addEventListener('click', handleClick)
     })
-    sendEmailVerification(auth.currentUser)
-
   })
   .catch((error) => {
-  
+   current.element.appendChild(notification.sendError(error.message))
+   notification.element.classList.remove('hidden')
+   $(`#${styles.root}`).addEventListener('click', handleClick)
   });
 
 }
 
-
+export {notification}
 export default data

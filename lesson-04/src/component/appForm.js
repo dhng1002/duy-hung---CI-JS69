@@ -43,6 +43,14 @@ let AppForm = (()=>{
             this.button.classList.add('ring-4','rounded', 'text-white', 'px-10', 'py-2','mt-3', 'bg-blue-600')
             this.button.textContent = 'Create Account'
             this.button.addEventListener('click', this.createAccHandle.bind(this))
+            this.link = document.createElement('p')
+            this.url = document.createElement('a')
+            this.url.setAttribute('href', '#')
+            this.url.setAttribute('class', 'text-red-400')
+            this.url.innerText= 'Log In'
+            this.link.innerHTML = `Do you have Account?`
+            this.link.appendChild(this.url)
+            this.link.classList.add('mt-4','text-white')
         }
         box(arrs){
             let box = document.createElement('div')
@@ -54,6 +62,7 @@ let AppForm = (()=>{
         }
         createAccHandle(){
             data(this.mail[1].value,this.passWord[1].value,this.userName[1].value)
+            
         }
         render(){
             this.element.appendChild(this.title)
@@ -61,6 +70,7 @@ let AppForm = (()=>{
             this.element.appendChild(this.box(this.userName))
             this.element.appendChild(this.box(this.passWord))
             this.element.appendChild(this.button)
+            this.element.appendChild(this.link)
             return this.element
         }
         
