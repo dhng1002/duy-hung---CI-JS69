@@ -1,0 +1,26 @@
+{
+  "name": "lesson-05",
+  "version": "1.0.0",
+  "private": true,
+  "license": "MIT",
+  "devDependencies": {
+    "animejs": "^3.2.1",
+    "autoprefixer": "^10.4.0",
+    "html-webpack-plugin": "^5.5.0",
+    "postcss": "^8.4.4",
+    "postcss-loader": "^6.2.1",
+    "sass": "^1.43.5",
+    "sass-loader": "^12.3.0",
+    "tailwindcss": "^2.2.19",
+    "webpack": "^5.64.4",
+    "webpack-cli": "^4.9.1"
+  },
+  "scripts": {
+    "start": "webpack --config dev.config.js"
+  },
+  "dependencies": {
+    "css-loader": "^6.5.1",
+    "firebase": "^9.6.0",
+    "style-loader": "^3.3.1"
+  }
+}
