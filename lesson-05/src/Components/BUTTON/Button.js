@@ -163,9 +163,15 @@ class Button {
         }
     }
     goSignIn(){
-        
-        $('#root').innerHTML = ''
-        ADD( $('#root'),new App().render())
+        console.log(this.parent.children[0].remove())
+        this.parent.appendChild(new SignIn().render())
+        app.box.children[3].remove()
+        app.box.appendChild(app.linkToSignUp)
+        const length = app.button.box.children.length
+        for(let index = 0 ; index < length ; index ++){
+            app.button.box.children[0].remove()
+        }
+        ADD(app.button.box, new SignInBtn('SIGN IN').render())
     }
     animationShow(){
         this.start = this.start + 0.1

@@ -65,13 +65,13 @@ class App {
         }
         
     }    
-    render(selectRender = 'LogIn'){
-        if(selectRender === 'LogIn'){
+    render(selectRender = 'FORM', link = this.linkToSignIn){
+        if(selectRender === 'FORM'){
         setStyle(this.style, this.box)
         ADD(this.box,this.logo.render())
         ADD(this.box,this.form.render())
         ADD(this.box,this.button.render())
-        ADD(this.box,this.linkToSignIn)
+        ADD(this.box,link)
         return this.box
         }else if(selectRender === 'HOME'){
             setStyle(this.conversationStyle, this.box)

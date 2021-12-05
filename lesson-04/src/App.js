@@ -17,10 +17,11 @@ class App {
             'rounded-lg',
             'overflow-hidden',
         ]
+        this.component = new AppForm()
         this.element = document.createElement('div')
         this.element.classList.add(...this.tailwind)
         this.element.appendChild(AppBG)
-        this.element.appendChild(AppForm)
+        this.element.appendChild(this.component.render())
     }
     reRender(a){
         return a
